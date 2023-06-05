@@ -1,0 +1,26 @@
+type Query {
+    users: [User!] @paginate
+    user(id: ID @eq): User @find
+}
+
+extend type Mutation {
+    login(email: String!, password: String!, device: String!): String!
+    createUser(
+        name: String
+        email: String
+        role: String
+        type: String
+        password: String
+        account_id: String
+    ): User! @create
+}
+
+type User {
+    id: ID
+    name: String
+    email: String
+    role: String
+    type: String
+    password: String
+    account_id: String
+}
